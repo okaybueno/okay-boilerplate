@@ -18,65 +18,65 @@
 
 @mixin animation($name, $duration, $iteration, $delay, $fillmode) {
   -webkit-animation-duration: $duration;
-     -moz-animation-duration: $duration;
-          animation-duration: $duration;
-      -ms-animation-duration: $duration;
+  -moz-animation-duration: $duration;
+  animation-duration: $duration;
+  -ms-animation-duration: $duration;
   -webkit-animation-delay: $delay;
-     -moz-animation-delay: $delay;
-          animation-delay: $delay;
-      -ms-animation-delay: $delay;
+  -moz-animation-delay: $delay;
+  animation-delay: $delay;
+  -ms-animation-delay: $delay;
   -webkit-animation-iteration-count: $iteration;
-     -moz-animation-iteration-count: $iteration;
-          animation-iteration-count: $iteration;
-      -ms-animation-iteration-count: $iteration;
+  -moz-animation-iteration-count: $iteration;
+  animation-iteration-count: $iteration;
+  -ms-animation-iteration-count: $iteration;
   -webkit-animation-name: $name;
-     -moz-animation-name: $name;
-          animation-name: $name;
-      -ms-animation-name: $name;
+  -moz-animation-name: $name;
+  animation-name: $name;
+  -ms-animation-name: $name;
   -webkit-animation-fill-mode: $fillmode;
-     -moz-animation-fill-mode: $fillmode;
-          animation-fill-mode: $fillmode;
-      -ms-animation-fill-mode: $fillmode;
+  -moz-animation-fill-mode: $fillmode;
+  animation-fill-mode: $fillmode;
+  -ms-animation-fill-mode: $fillmode;
 }
 
 // Mixins for Element Transitions
 
-@mixin transition-standard ($type, $duration) {
-          transition: $type $duration cubic-bezier(.3, 0, .2, 1);
+@mixin transition-standard($type, $duration) {
+  transition: $type $duration cubic-bezier(.3, 0, .2, 1);
 }
 
-@mixin transition-acceleration ($type, $duration) {
-          transition: $type $duration cubic-bezier(.9, 0, 0, 1);
+@mixin transition-acceleration($type, $duration) {
+  transition: $type $duration cubic-bezier(.9, 0, 0, 1);
 }
 
 // Generic Vue Transition Classes
 
 .fade-in-enter-active,
 .fade-in-leave-active {
-    transition: opacity .24s;
+  transition: opacity .24s;
 }
 
 .fade-in-enter,
 .fade-in-leave-to {
-    opacity: 0;
+  opacity: 0;
 }
 
 .fade-in-up-enter-active,
 .fade-in-up-leave-active {
-    transition: opacity .36s, transform .48s;
+  transition: opacity .36s, transform .48s;
 }
 
 .fade-in-up-enter,
 .fade-in-up-leave-to {
-    transform: translateY(48px);
-    opacity: 0;
+  transform: translateY(48px);
+  opacity: 0;
 }
 
 // Hardware Acceleration Mixin
 
 @mixin hardware($backface: true, $perspective: 1000) {
-    @if $backface {
-        backface-visibility: hidden;
-    }
-    perspective: $perspective;
+  @if $backface {
+    backface-visibility: hidden;
+  }
+  perspective: $perspective;
 }
