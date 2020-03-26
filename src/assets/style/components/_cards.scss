@@ -1,0 +1,58 @@
+@mixin card {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: $size-s;
+  border-radius: $border-radius;
+  background: $white;
+  box-shadow: $shadow-card;
+}
+
+@mixin card-hover {
+  transition: box-shadow .16s linear, transform .5s cubic-bezier(.19, 1, .22, 1);
+  will-change: transform;
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: $shadow-card-hover;
+    transition: box-shadow .16s linear, transform .5s cubic-bezier(.19, 1, .22, 1);
+  }
+}
+
+.cards {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+
+  &--center {
+    justify-content: center;
+  }
+}
+
+.card-example {
+  @include card;
+  @include card-hover;
+  flex-basis: grid-el-dtp(4);
+  flex-grow: 0;
+  flex-shrink: 1;
+  margin-right: $grid-i-gutter--dtp;
+  padding: $size-s;
+  text-align: center;
+
+  &:nth-child(2n + 2) {
+    margin-right: 0;
+  }
+
+  @include mq('tablet') {
+    flex-basis: grid-el-tab(4);
+    flex-grow: 0;
+    flex-shrink: 1;
+    margin-right: $grid-i-gutter--tab;
+  }
+
+  @include mq('mobile') {
+    flex-basis: 100%;
+    flex-grow: 0;
+    flex-shrink: 1;
+    margin-right: unset;
+  }
+}

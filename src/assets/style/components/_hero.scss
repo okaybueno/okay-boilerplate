@@ -1,0 +1,7 @@
+.hero {
+  @include grid-wrapper;
+  background: $color-primary;
+  color: $white;
+  padding-top: $size-l;
+  padding-bottom: $size-l;
+}

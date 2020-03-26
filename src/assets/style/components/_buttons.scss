@@ -1,0 +1,152 @@
+button {
+  cursor: pointer;
+  padding: 0;
+  border: unset;
+  background: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.button {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  padding: .6rem 1rem;
+  outline: none;
+  border: 0;
+  border-radius: 2rem;
+  box-shadow: $shadow-button;
+  transition: box-shadow .16s linear;
+
+  &::after {
+    @include after-fill;
+    top: -4px;
+    left: -4px;
+    border: 4px solid transparent;
+    border-radius: 2rem;
+    transition: border .16s linear;
+  }
+
+  &:hover,
+  &:focus {
+    outline: 0;
+    box-shadow: $shadow-button-hover;
+    transition: box-shadow .16s linear;
+  }
+
+  &--white {
+    color: $black;
+    background: $white;
+
+    &:hover,
+    &:focus {
+      &::after {
+        border: 4px solid $white-trans;
+        transition: border .16s linear;
+      }
+    }
+  }
+
+  &--black {
+    color: $white;
+    background: $black;
+
+    &:hover,
+    &:focus {
+      &::after {
+        border: 4px solid $black-trans;
+      }
+    }
+  }
+
+  &--dark-grey {
+    color: $white;
+    background: $grey-dark;
+
+    &:hover,
+    &:focus {
+      &::after {
+        border: 4px solid $white-trans;
+      }
+    }
+  }
+
+  &--inactive {
+    cursor: default;
+    border: 0;
+    color: $white;
+    background: $grey-darker;
+
+    &::after {
+      @include after-fill;
+      top: -4px;
+      left: -4px;
+      border: 4px solid transparent;
+      border-radius: 2rem;
+      transition: border .16s linear;
+    }
+
+    &:hover,
+    &:focus {
+      box-shadow: $shadow-button;
+
+      &::after {
+        border: 4px solid transparent;
+      }
+    }
+
+  }
+
+  &--icon-tw {
+    padding-left: 2.3rem;
+
+    &::before {
+      position: absolute;
+      top: .6rem;
+      left: 1rem;
+      width: .8rem;
+      height: .8rem;
+      content: '';
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAUCAMAAABRYFY8AAAAflBMVEUAAAD////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////vroaSAAAAKXRSTlMA8tyfBPbquC4fDvvtx5MkFuXg1cC9sqSIg3VqYmBQSjMcrqhXVD8+PCqn/FYAAACrSURBVBjTZczXFoMgEEXRASxAbLEbezr//4NBEaJy3mavuwYOTaWHKwZAEwBCDfcXIQuaPJSH68UbMyRUeHgBF8IblNdi6+JOAMuIzIv72tFHXmRd3McEQu0lyGb9NUDaiWTHr8S5GmSZsOoWb21nsD46M4Y1p/GOflNOM3RgxEHlW3MVL/YcOmAaieFr/GenDyym72eUmnXB9DaJXKNpB7t4+8DIxXn03eEPQ0UoyqbtTtQAAAAASUVORK5CYII=');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+  }
+
+  &--arrow-r {
+    padding-right: 2.3rem;
+
+    &::before {
+      position: absolute;
+      top: .6rem;
+      right: 1rem;
+      width: .8rem;
+      height: .8rem;
+      content: '';
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOBAMAAADd6iHDAAAAJ1BMVEUAAAD///////////////////////////////////////////////+uPUo5AAAADHRSTlMAossQmA+0n5GMhoDPjUrPAAAAPklEQVQI12MAgaAzxxmggFXnjAOMbXTmCIzJrHOmASF8koFBEAzEzpxZwHAGBk4jMxEKENrQDENYgbAY4RwAJhAloy7lHk4AAAAASUVORK5CYII=');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+  }
+
+  &--arrow-d {
+    padding-right: 2.3rem;
+
+    &::before {
+      position: absolute;
+      top: .5rem;
+      right: 1rem;
+      width: .8rem;
+      height: .8rem;
+      content: '';
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAVCAYAAAB2Wd+JAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAADqADAAQAAAABAAAAFQAAAACJCL1TAAAAzklEQVQ4Ee2RTQoCMQyFp27cuFYQf1CvJ8jgH3MKbzCn0PVcyo2r+l5NoJ2Jpbg2EJq8vC9lOq4ywns/gTyW0cs59zRsQwlgi9Roh46qGlliifYHM6/0++PgZ00zi80RmBlvfKBYmw5DFO+d4AbZQVgZvkQST0dGv1HhZeKMGkCcBYiygqy3SN68YBOHaIToCUHwJjWPHZKGORsJ1tQ40/gw2NggS6NROpygLgXkNYG0AXjKwGf1mSfA2oCPprkvAjxEcN2fZ3uAey74ZnoD7HXd0Sif/koAAAAASUVORK5CYII=');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+  }
+}

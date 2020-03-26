@@ -1,0 +1,5 @@
+.article {
+  @include grid-wrapper;
+  padding-top: $size-m;
+  padding-bottom: $size-m;
+}

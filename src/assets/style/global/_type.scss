@@ -1,0 +1,135 @@
+// Fontface Import
+
+@font-face {
+  font-family: 'Gellix-Bold';
+  font-style: normal;
+  font-display: optional;
+  src: url('/../fonts/Gellix-Bold.woff2') format('woff2'), url('/../fonts/Gellix-Bold.woff') format('woff'), url('/../fonts/Gellix-Bold.eot') format('eot');
+}
+@font-face {
+  font-family: 'Silka Regular';
+  font-style: normal;
+  font-display: optional;
+  src: url('/../fonts/silka-regular-webfont.woff2') format('woff2'), url('/../fonts/silka-regular-webfont.woff') format('woff'), url('/../fonts/silka-regular-webfont.eot') format('eot'), url('/../fonts/silka-regular-webfont.ttf') format('ttf');
+}
+
+html {
+  font-family: 'Silka Regular', sans-serif;
+  font-size: 26px;
+
+  @include mq('desktop') {
+    font-size: 20px;
+  }
+
+  @include mq('tablet') {
+    font-size: 18px;
+  }
+
+  @include mq('mobile') {
+    font-size: 16px;
+  }
+}
+
+
+h1 {
+  font-family: 'Gellix-Bold', sans-serif;
+  font-size: 3rem;
+  line-height: 120%;
+  margin-bottom: 2rem;
+}
+
+h2 {
+  font-family: 'Gellix-Bold', sans-serif;
+  font-size: 2.4rem;
+  line-height: 120%;
+  margin-bottom: 1.4rem;
+}
+
+h3 {
+  font-family: 'Gellix-Bold', sans-serif;
+  font-size: 1.6rem;
+  line-height: 140%;
+  margin-bottom: 1rem;
+}
+
+h4 {
+  font-family: 'Gellix-Bold', sans-serif;
+  font-size: 1rem;
+  line-height: 140%;
+  margin-bottom: .5rem;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 160%;
+  margin-bottom: 2rem;
+}
+
+button {
+  font-size: 1rem;
+  white-space: nowrap;
+  line-height: 100%;
+}
+
+a {
+  color: $color-primary;
+  font-size: 1rem;
+  line-height: 100%;
+}
+
+ul,
+ol {
+  margin-top: 1.6rem;
+  margin-bottom: 1.6rem;
+}
+
+ul {
+  li {
+    margin-left: 1rem;
+    list-style: disc;
+  }
+}
+
+ol {
+  li {
+    margin-left: 1rem;
+    list-style: decimal;
+  }
+}
+
+li {
+  margin-bottom: .8rem;
+  font-size: 1rem;
+  line-height: 120%;
+}
+
+label {
+  font-size: .8rem;
+  line-height: 100%;
+}
+
+input {
+  font-size: 1rem;
+}
+
+blockquote {
+  position: relative;
+  margin-bottom: .8rem;
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 150%;
+}
+
+em {
+  font-style: italic;
+}
+
+textarea {
+  min-height: 6rem;
+}
+
+.text-truncate {
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+}

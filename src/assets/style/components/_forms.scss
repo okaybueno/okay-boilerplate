@@ -1,0 +1,24 @@
+.input__container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  label {
+    color: $grey-light;
+    text-transform: uppercase;
+  }
+}
+
+.input,
+textarea {
+  padding: 12px 16px;
+  box-sizing: border-box;
+  border-radius: $border-radius;
+  border: 1px solid $grey-light;
+  color: $color-secondary;
+  outline: none;
+
+  &:focus {
+    border: 1px solid $color-secondary;
+  }
+}

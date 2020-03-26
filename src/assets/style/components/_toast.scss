@@ -1,0 +1,14 @@
+.toast {
+  @include grid-wrapper;
+  position: fixed;
+  bottom: 40px;
+  height: 60px;
+  color: $black;
+  background: $grey-mid;
+  border-radius: $border-radius;
+  z-index: z('modal');
+
+  &:hover {
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,4 @@
+.content {
+  @include grid-wrapper;
+  padding-top: $size-m;
+}

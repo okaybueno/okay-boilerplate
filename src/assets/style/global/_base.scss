@@ -1,0 +1,26 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+html {
+  font-size: 18px;
+
+  @include mq('desktop') {
+    font-size: 16px;
+  }
+
+  @include mq('tablet') {
+    font-size: 15px;
+  }
+
+  @include mq('mobile') {
+    font-size: 14px;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
