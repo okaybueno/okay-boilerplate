@@ -1,0 +1,103 @@
+$dropdown-selected-height: 38px !default;
+$dropdown-item-hover-bg: none !default;
+$dropdown-item-active-bg: none !default;
+
+.dropdown {
+    font-size: 1rem;
+    position: relative;
+    cursor: pointer;
+    
+	&__toggle {
+        position: relative;
+		color: $black;
+		width: 100%;
+        //padding: 10px 10px 8px;
+		box-sizing: border-box;
+        font-family: 'Main Medium', 'Helvetica', 'Arial', sans-serif;
+		border-radius: 2px;
+		height: $dropdown-selected-height;
+		display: flex;
+		align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+
+        &:hover {
+			cursor: pointer;
+		}
+	}
+
+	&__menu {
+		width: 100%;
+        position: absolute;
+		top: $dropdown-selected-height;
+		left: 0;
+		z-index: 1000;
+		margin: -1px 0 0;
+		list-style: none;
+        overflow-y: auto;
+        max-height: 350px;
+
+		&:hover {
+			cursor: pointer;
+		}
+
+		li {
+			overflow: hidden;
+			width: 100%;
+			position: relative;
+			margin: 0;
+		}
+    }
+
+    &__item {
+        display: block;
+        clear: both;
+        color: $black;
+        white-space: nowrap;
+        text-decoration: none;
+        user-select: none;
+        box-sizing: border-box;
+
+        &:hover {
+            background-color: $dropdown-item-hover-bg;
+        }
+
+        &--active {
+            background-color: $dropdown-item-active-bg;
+            // to set if needed
+        }
+
+    }
+
+    &__selected {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 1.1rem;
+        z-index: 2;
+    }
+
+    /* TO BE SET BY USER */
+	// .caret {
+    //     margin-left: 10px;
+    //     z-index: 2;
+
+    //     position: absolute;
+    //     right: 9px;
+    //     top: 45%;
+
+    //     width: 8px;
+    //     height: 8px;
+    //     border-bottom: 1px solid $color-brand-secondary;
+    //     border-left: 1px solid $color-brand-secondary;
+
+    //     transform: translateY(-50%) rotate(-45deg);
+    //     transform-origin: 1px 7px;
+
+    //     transition: transform .5s ease;
+
+    //     &--active {
+    //         transform: translateY(-50%) rotate( 135deg );
+    //     }
+	// }
+}

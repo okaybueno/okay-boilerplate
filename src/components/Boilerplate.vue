@@ -189,11 +189,42 @@
                 </div>
             </div>
         </section>
+
+        <section class="content">
+            <h1>Dropdowns</h1>
+            <div class="cards">
+                <Dropdown :options="dropdownOptions"
+                          :selected="selectedOption = $event"
+                          @optionSelected="onDropdownSelect"
+                          placeholder="Select an option"
+                          toggleClass="dropdown--white" menuClass="dropdown--white">
+                </Dropdown>
+            </div>
+        </section>
+        <section class="content">
+            <h1>Switch</h1>
+            <NotificationSwitch :checked="true" field="status"/>
+        </section>
     </div>
 </template>
 
 <script>
+    import Dropdown from "./Dropdown";
+    import NotificationSwitch from "./Switch";
     export default {
-        name: 'Boilerplate'
+        name: 'Boilerplate',
+        components: {
+            Dropdown,
+            NotificationSwitch
+        },
+        data: function(){
+            return {
+                dropdownOptions: [
+                    { label: 'Active', value: 'active'},
+                    { label: 'Inactive', value: 'inactive'}
+                ],
+                selectedOption: null
+            }
+        },
     }
 </script>
