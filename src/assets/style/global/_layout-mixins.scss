@@ -96,6 +96,25 @@
   }
 }
 
+// example usage: @include property-with-gutter('right');
+@mixin property-with-gutter($property, $breakpoints: null, $grid-gutter: 'outer') {
+  @if (index($breakpoints, 'desktop') or $breakpoints == null) {
+    #{$property}: if($grid-gutter == 'outer', $grid-o-gutter--dtp, $grid-i-gutter--dtp);
+  }
+
+  @if (index($breakpoints, 'tablet') or $breakpoints == null) {
+    @include mq('tablet') {
+      #{$property}: if($grid-gutter == 'outer', $grid-o-gutter--tab, $grid-i-gutter--tab);
+    }
+  }
+
+  @if (index($breakpoints, 'mobile') or $breakpoints == null) {
+    @include mq('mobile') {
+      #{$property}: if($grid-gutter == 'outer', $grid-o-gutter--mob, $grid-i-gutter--mob);
+    }
+  }
+}
+
 
 @mixin after-fill {
   content: '';
