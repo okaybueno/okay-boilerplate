@@ -31,16 +31,13 @@
 .card-example {
   @include card;
   @include card-hover;
+  @include grid-el-row(3, null, 1);
   flex-basis: grid-el-dtp(4);
   flex-grow: 0;
   flex-shrink: 1;
   margin-right: $grid-i-gutter--dtp;
   padding: $size-s;
   text-align: center;
-
-  &:nth-child(2n + 2) {
-    margin-right: 0;
-  }
 
   @include mq('tablet') {
     flex-basis: grid-el-tab(4);

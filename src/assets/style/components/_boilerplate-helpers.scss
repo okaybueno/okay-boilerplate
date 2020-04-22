@@ -60,11 +60,6 @@
       width: grid-el-dtp(4);
     }
 
-    &--r-3 {
-      @include grid-el-responsive(3, 4, 6);
-      @include grid-el-row(4, 3, 2);
-    }
-
     &--rsp {
       @include grid-el-responsive(3, 4, 6); // on desktop our el takes 3 columns, on tablet: 4, and on mobile: 6
       @include grid-el-row(4, 3, 2); // on desktop there are 4 els per row, on tablet: 3 els per row, and on mobile: 2 els per row
