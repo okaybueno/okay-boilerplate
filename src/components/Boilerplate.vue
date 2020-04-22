@@ -194,8 +194,8 @@
             <h1>Dropdowns</h1>
             <div class="cards">
                 <Dropdown :options="dropdownOptions"
-                          :selected="selectedOption = $event"
-                          @optionSelected="onDropdownSelect"
+                          :selected="selectedOption"
+                          @optionSelected="selectedOption = $event"
                           placeholder="Select an option"
                           toggleClass="dropdown--white" menuClass="dropdown--white">
                 </Dropdown>
@@ -205,12 +205,20 @@
             <h1>Switch</h1>
             <NotificationSwitch :checked="true" field="status"/>
         </section>
+        <section class="content">
+            <h1>Validation</h1>
+            <p>Type in something:</p>
+            <input type="text" @input="validateInput" v-model="firstName">
+            <p>{{ validationResponse}}</p>
+        </section>
     </div>
 </template>
 
 <script>
     import Dropdown from "./Dropdown";
     import NotificationSwitch from "./Switch";
+    import { ruleNames, getValidationRules, validationService} from "../validation";
+
     export default {
         name: 'Boilerplate',
         components: {
@@ -223,8 +231,30 @@
                     { label: 'Active', value: 'active'},
                     { label: 'Inactive', value: 'inactive'}
                 ],
-                selectedOption: null
+                selectedOption: null,
+                validationResponse: null,
+                firstName: null
             }
         },
+
+        methods: {
+            validateInput () {
+                let rules = getValidationRules(ruleNames.firstName);
+                let validationObj = {
+                    first_name: this.firstName
+                };
+                let validation = validationService(validationObj, rules);
+                if( validation.passes()) {
+                    this.validationResponse = 'validation ok!'
+                } else {
+                    let errors = validation.getErrors()
+                    this.validationResponse = errors[0].messages[0];
+                }
+            }
+        },
+        mounted () {
+            this.validateInput();
+        }
+
     }
 </script>
