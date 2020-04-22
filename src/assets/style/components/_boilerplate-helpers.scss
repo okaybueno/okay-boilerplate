@@ -15,6 +15,16 @@
     }
   }
 
+  &__row-el {
+    &--12 {
+      @include grid-el-row(12, 12, 12);
+    }
+
+    &--8 {
+      @include grid-el-row(8, 8, 8);
+    }
+  }
+
   &__el {
     display: flex;
     justify-content: center;
@@ -24,50 +34,10 @@
 
     &--1 {
       width: grid-el-dtp(1);
-
-      &:not(:last-child) {
-        margin-right: $grid-i-gutter--dtp;
-      }
-
-      @include mq('tablet') {
-        width: grid-el-tab(1);
-
-        &:not(:last-child) {
-          margin-right: $grid-i-gutter--tab;
-        }
-      }
-
-      @include mq('mobile') {
-        width: grid-el-mob(1);
-
-        &:not(:last-child) {
-          margin-right: $grid-i-gutter--mob;
-        }
-      }
     }
 
     &--2 {
       width: grid-el-dtp(2);
-
-      &:not(:last-child) {
-        margin-right: $grid-i-gutter--dtp;
-      }
-
-      @include mq('tablet') {
-        width: grid-el-tab(2);
-
-        &:not(:last-child) {
-          margin-right: $grid-i-gutter--tab;
-        }
-      }
-
-      @include mq('mobile') {
-        width: grid-el-mob(2);
-
-        &:not(:last-child) {
-          margin-right: $grid-i-gutter--mob;
-        }
-      }
     }
 
     &--3-3 {
@@ -88,57 +58,16 @@
 
     &--4 {
       width: grid-el-dtp(4);
+    }
 
-      &:not(:last-child) {
-        margin-right: $grid-i-gutter--dtp;
-      }
-
-      @include mq('tablet') {
-        width: grid-el-tab(4);
-
-        &:not(:last-child) {
-          margin-right: $grid-i-gutter--tab;
-        }
-      }
-
-      @include mq('mobile') {
-        width: grid-el-mob(4);
-
-        &:not(:last-child) {
-          margin-right: $grid-i-gutter--mob;
-        }
-      }
+    &--r-3 {
+      @include grid-el-responsive(3, 4, 6);
+      @include grid-el-row(4, 3, 2);
     }
 
     &--rsp {
-      width: grid-el-dtp(2);
-      margin-bottom: $grid-i-gutter--dtp;
-
-      &:not(:nth-child(4n + 4)) {
-        margin-right: $grid-i-gutter--dtp;
-      }
-
-      @include mq('tablet') {
-        width: grid-el-tab(4);
-        margin-bottom: $grid-i-gutter--tab;
-
-        &:not(:nth-child(4n + 4)) {
-          margin-right: unset;
-        }
-
-        &:not(:nth-child(2n + 2)) {
-          margin-right: $grid-i-gutter--tab;
-        }
-      }
-
-      @include mq('mobile') {
-        width: grid-el-mob(8);
-        margin-bottom: $grid-i-gutter--mob;
-
-        &:not(:nth-child(2n + 2)) {
-          margin-right: unset;
-        }
-      }
+      @include grid-el-responsive(3, 4, 6); // on desktop our el takes 3 columns, on tablet: 4, and on mobile: 6
+      @include grid-el-row(4, 3, 2); // on desktop there are 4 els per row, on tablet: 3 els per row, and on mobile: 2 els per row
     }
 
   }

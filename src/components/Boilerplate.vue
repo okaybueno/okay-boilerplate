@@ -9,44 +9,68 @@
             <p>Our layout is based on a flexbox grid approach – this boilerplate works with an eight column grid for all
                 screen sizes, but feel free to chose whatever suits your project best. Please keep in mind that you will
                 have to adjust the grid-el functions if you adjust the column approach. We use box-sizing border-box on
-                all of our elements by default. Here are some examples:</p>
+                all of our elements by default. We use the grid-el-row function to specify how many els there are in the row Here are some examples:</p>
             <div class="grid grid--mrg">
-                <div class="grid__el grid__el--1">
+                <div class="grid__el grid__el--1 grid__row-el--12">
                     1
                 </div>
-                <div class="grid__el grid__el--1">
+                <div class="grid__el grid__el--1 grid__row-el--12">
                     1
                 </div>
-                <div class="grid__el grid__el--1">
+                <div class="grid__el grid__el--1 grid__row-el--12">
                     1
                 </div>
-                <div class="grid__el grid__el--1">
+                <div class="grid__el grid__el--1 grid__row-el--12">
                     1
                 </div>
-                <div class="grid__el grid__el--1">
+                <div class="grid__el grid__el--1 grid__row-el--12">
                     1
                 </div>
-                <div class="grid__el grid__el--1">
+                <div class="grid__el grid__el--1 grid__row-el--12">
                     1
                 </div>
-                <div class="grid__el grid__el--1">
+                <div class="grid__el grid__el--1 grid__row-el--12">
                     1
                 </div>
-                <div class="grid__el grid__el--1">
+                <div class="grid__el grid__el--1 grid__row-el--12">
+                    1
+                </div>
+                <div class="grid__el grid__el--1 grid__row-el--12">
+                    1
+                </div>
+                <div class="grid__el grid__el--1 grid__row-el--12">
+                    1
+                </div>
+                <div class="grid__el grid__el--1 grid__row-el--12">
+                    1
+                </div>
+                <div class="grid__el grid__el--1 grid__row-el--12">
                     1
                 </div>
             </div>
             <div class="grid grid--mrg">
-                <div class="grid__el grid__el--1">
+                <div class="grid__el grid__el--1 grid__row-el--8">
                     1
                 </div>
-                <div class="grid__el grid__el--2">
+                <div class="grid__el grid__el--2 grid__row-el--8">
                     2
                 </div>
-                <div class="grid__el grid__el--4">
+                <div class="grid__el grid__el--4 grid__row-el--8">
                     4
                 </div>
-                <div class="grid__el grid__el--1">
+                <div class="grid__el grid__el--1 grid__row-el--8">
+                    1
+                </div>
+                <div class="grid__el grid__el--1 grid__row-el--8">
+                    1
+                </div>
+                <div class="grid__el grid__el--1 grid__row-el--8">
+                    1
+                </div>
+                <div class="grid__el grid__el--1 grid__row-el--8">
+                    1
+                </div>
+                <div class="grid__el grid__el--1 grid__row-el--8">
                     1
                 </div>
             </div>
@@ -57,11 +81,11 @@
                 by using appropriate margin and grid-el functions on the component:</p>
             <div class="grid grid--mrg">
                 <div class="grid__el grid__el--3-3">
-                    1
+                    3
                 </div>
             </div>
             <p>Layouts can easily be made responsive by defining the components width and margin values in media queries
-                using our @mq function. Resize the browser window to see the effect:</p>
+                using grid-el-responsive mixin and grid-el-row functions. Resize the browser window to see the effect:</p>
             <div class="grid">
                 <div class="grid__el grid__el--rsp">
                     O

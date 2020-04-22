@@ -3,10 +3,10 @@
 $size-xxxs: .5rem;
 $size-xxs: .8rem;
 $size-xs: 1rem;
-$size-s: 2rem;
-$size-m: 3rem;
-$size-l: 4rem;
-$size-xl: 6rem;
+$size-s: 1.5rem;
+$size-m: 2rem;
+$size-l: 3rem;
+$size-xl: 4rem;
 $size-xxl: 8rem;
 $size-xxxl: 16rem;
 
@@ -16,7 +16,7 @@ $grid-o-gutter--mob: $size-xs;
 $grid-o-gutter--tab: $size-l;
 $grid-o-gutter--dtp: 20%;
 
-$grid-columns: 8;
+$grid-columns: 12;
 
 $grid-i-gutter--mob: $size-xs;
 $grid-i-gutter--tab: $size-s;

@@ -1,17 +1,25 @@
 // Generic Grid Wrapper Class
-@mixin grid-wrapper {
-  width: 100%;
-  padding-left: $grid-o-gutter--dtp;
-  padding-right: $grid-o-gutter--dtp;
-
-  @include mq('tablet') {
-    padding-left: $grid-o-gutter--tab;
-    padding-right: $grid-o-gutter--tab;
+@mixin grid-wrapper($breakpoints: null) {
+  @if (index($breakpoints, 'mobile') or $breakpoints == null) {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: $grid-o-gutter--dtp;
+    padding-right: $grid-o-gutter--dtp;
   }
 
-  @include mq('mobile') {
-    padding-left: $grid-o-gutter--mob;
-    padding-right: $grid-o-gutter--mob;
+  @if (index($breakpoints, 'tablet') or $breakpoints == null) {
+    @include mq('tablet') {
+      padding-left: $grid-o-gutter--tab;
+      padding-right: $grid-o-gutter--tab;
+    }
+  }
+
+  @if (index($breakpoints, 'mobile') or $breakpoints == null) {
+    @include mq('mobile') {
+      padding-left: $grid-o-gutter--mob;
+      padding-right: $grid-o-gutter--mob;
+    }
   }
 }
 
@@ -36,6 +44,55 @@
     @return calc((100% / #{$grid-columns} - #{$grid-i-gutter--mob} / #{$grid-columns} * (#{$grid-columns} - 1)) * #{$cols} + #{$grid-i-gutter--mob} * #{$cols});
   } @else {
     @return calc((100% / #{$grid-columns} - #{$grid-i-gutter--mob} / #{$grid-columns} * (#{$grid-columns} - 1)) * #{$cols} + #{$grid-i-gutter--mob} * (#{$cols} - 1));
+  }
+}
+
+@mixin grid-el-responsive($desktop-cols: 1, $tablet-cols: 1, $mobile-cols: 1) {
+  // variables specify the number of columns which each individual element spans
+  width: grid-el-dtp($desktop-cols);
+
+  @include mq('tablet') {
+    width: grid-el-tab($tablet-cols);
+  }
+
+  @include mq('mobile') {
+    width: grid-el-tab($mobile-cols);
+  }
+}
+
+@mixin grid-el-row($row-els-desktop: null, $row-els-tablet: null, $row-els-mobile: null ) {
+  // variables specify the number of elements per row
+  max-width: 100%;
+
+  @if( $row-els-desktop) {
+    margin-right: $grid-i-gutter--dtp;
+    &:nth-child(#{$row-els-desktop}n) {
+      margin-right: 0;
+    }
+  }
+
+  @if( $row-els-tablet) {
+    @include mq('tablet') {
+      margin-right: $grid-i-gutter--tab;
+      &:nth-child(#{$row-els-desktop}n) {
+        margin-right: $grid-i-gutter--tab;
+      }
+      &:nth-child(#{$row-els-tablet}n) {
+        margin-right: 0;
+      }
+    }
+  }
+
+  @if( $row-els-mobile ) {
+    @include mq('mobile') {
+      margin-right: $grid-i-gutter--mob;
+      &:nth-child(#{$row-els-tablet}n) {
+        margin-right: $grid-i-gutter--mob;
+      }
+      &:nth-child(#{$row-els-mobile}n) {
+        margin-right: 0;
+      }
+    }
   }
 }
 
