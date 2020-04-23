@@ -42,16 +42,16 @@
 
     &--3-3 {
       width: grid-el-dtp(3);
-      margin-left: grid-el-dtp(3, true);
+      margin-left: grid-el-dtp(3, $grid-i-gutter--dtp);
 
       @include mq('tablet') {
         width: grid-el-tab(3);
-        margin-left: grid-el-tab(3, true);
+        margin-left: grid-el-tab(3, $grid-i-gutter--tab);
       }
 
       @include mq('mobile') {
         width: grid-el-mob(3);
-        margin-left: grid-el-mob(3, true);
+        margin-left: grid-el-mob(3, $grid-i-gutter--mob);
       }
     }
 

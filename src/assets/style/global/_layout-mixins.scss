@@ -23,27 +23,29 @@
   }
 }
 
-@function grid-el-dtp($cols, $margin: false) {
-  @if $margin {
-    @return calc((100% / #{$grid-columns} - #{$grid-i-gutter--dtp} / #{$grid-columns} * (#{$grid-columns} - 1)) * #{$cols} + #{$grid-i-gutter--dtp} * #{$cols});
+// formula for grid-el functions is refactored from:
+ //@return calc((100% / #{$grid-columns} - #{$grid-i-gutter--dtp} / #{$grid-columns} * (#{$grid-columns} - 1)) * #{$cols} + #{$grid-i-gutter--dtp} * #{$cols});
+@function grid-el-dtp($cols, $mod: false) {
+  @if $mod {
+      @return calc((100% / #{$grid-columns / $cols}) - #{(($grid-i-gutter--dtp * ($grid-columns - 1)) / ($grid-columns / $cols)) - ($grid-i-gutter--dtp * ($cols - 1))} + #{$mod});
   } @else {
-    @return calc((100% / #{$grid-columns} - #{$grid-i-gutter--dtp} / #{$grid-columns} * (#{$grid-columns} - 1)) * #{$cols} + #{$grid-i-gutter--dtp} * (#{$cols} - 1));
+      @return calc((100% / #{$grid-columns / $cols}) - #{(($grid-i-gutter--dtp * ($grid-columns - 1)) / ($grid-columns / $cols)) - ($grid-i-gutter--dtp * ($cols - 1))});
   }
 }
 
-@function grid-el-tab($cols, $margin: false) {
-  @if $margin {
-    @return calc((100% / #{$grid-columns} - #{$grid-i-gutter--tab} / #{$grid-columns} * (#{$grid-columns} - 1)) * #{$cols} + #{$grid-i-gutter--tab} * #{$cols});
+@function grid-el-tab($cols, $mod: false) {
+  @if $mod {
+    @return calc((100% / #{$grid-columns / $cols}) - #{(($grid-i-gutter--tab * ($grid-columns - 1)) / ($grid-columns / $cols)) - ($grid-i-gutter--tab * ($cols - 1))} + #{$mod});
   } @else {
-    @return calc((100% / #{$grid-columns} - #{$grid-i-gutter--tab} / #{$grid-columns} * (#{$grid-columns} - 1)) * #{$cols} + #{$grid-i-gutter--tab} * (#{$cols} - 1));
+    @return calc((100% / #{$grid-columns / $cols}) - #{(($grid-i-gutter--tab * ($grid-columns - 1)) / ($grid-columns / $cols)) - ($grid-i-gutter--tab * ($cols - 1))});
   }
 }
 
-@function grid-el-mob($cols, $margin: false) {
-  @if $margin {
-    @return calc((100% / #{$grid-columns} - #{$grid-i-gutter--mob} / #{$grid-columns} * (#{$grid-columns} - 1)) * #{$cols} + #{$grid-i-gutter--mob} * #{$cols});
+@function grid-el-mob($cols, $mod: false) {
+  @if $mod {
+    @return calc((100% / #{$grid-columns / $cols}) - #{(($grid-i-gutter--mob * ($grid-columns - 1)) / ($grid-columns / $cols)) - ($grid-i-gutter--mob * ($cols - 1))} + #{$mod});
   } @else {
-    @return calc((100% / #{$grid-columns} - #{$grid-i-gutter--mob} / #{$grid-columns} * (#{$grid-columns} - 1)) * #{$cols} + #{$grid-i-gutter--mob} * (#{$cols} - 1));
+    @return calc((100% / #{$grid-columns / $cols}) - #{(($grid-i-gutter--mob * ($grid-columns - 1)) / ($grid-columns / $cols)) - ($grid-i-gutter--mob * ($cols - 1))});
   }
 }
 
