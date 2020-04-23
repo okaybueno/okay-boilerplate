@@ -70,14 +70,7 @@ a {
 ul {
   li {
     margin-left: 1rem;
-    list-style: disc;
-  }
-}
-
-ol {
-  li {
-    margin-left: 1rem;
-    list-style: decimal;
+    list-style: none;
   }
 }
 
@@ -92,16 +85,9 @@ label {
   line-height: 100%;
 }
 
-input {
+input, textarea {
   font-size: 1rem;
-}
-
-blockquote {
-  position: relative;
-  margin-bottom: .8rem;
-  font-size: 1rem;
-  font-style: italic;
-  line-height: 150%;
+  font-family: 'Silka Regular', sans-serif;
 }
 
 em {
