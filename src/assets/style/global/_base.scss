@@ -6,18 +6,19 @@ body {
 }
 
 html {
-  font-size: 18px;
+  font-family: 'Silka Regular', sans-serif;
+  font-size: 26px;
 
   @include mq('desktop') {
-    font-size: 16px;
+    font-size: 20px;
   }
 
   @include mq('tablet') {
-    font-size: 15px;
+    font-size: 18px;
   }
 
   @include mq('mobile') {
-    font-size: 14px;
+    font-size: 16px;
   }
 }
 

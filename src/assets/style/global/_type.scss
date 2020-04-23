@@ -13,23 +13,6 @@
   src: url('/../fonts/silka-regular-webfont.woff2') format('woff2'), url('/../fonts/silka-regular-webfont.woff') format('woff'), url('/../fonts/silka-regular-webfont.eot') format('eot'), url('/../fonts/silka-regular-webfont.ttf') format('ttf');
 }
 
-html {
-  font-family: 'Silka Regular', sans-serif;
-  font-size: 26px;
-
-  @include mq('desktop') {
-    font-size: 20px;
-  }
-
-  @include mq('tablet') {
-    font-size: 18px;
-  }
-
-  @include mq('mobile') {
-    font-size: 16px;
-  }
-}
-
 h1,
 h2,
 h3,
