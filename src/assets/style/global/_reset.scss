@@ -121,3 +121,14 @@ input {
 a {
   text-decoration: none;
 }
+
+button {
+  cursor: pointer;
+  padding: 0;
+  border: unset;
+  background: none;
+
+  &:focus {
+    outline: none;
+  }
+}
