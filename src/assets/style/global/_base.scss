@@ -6,7 +6,6 @@ body {
 }
 
 html {
-  font-family: 'Silka Regular', sans-serif;
   font-size: 26px;
 
   @include mq('desktop') {
