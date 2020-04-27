@@ -13,13 +13,16 @@
   src: url('/../fonts/silka-regular-webfont.woff2') format('woff2'), url('/../fonts/silka-regular-webfont.woff') format('woff'), url('/../fonts/silka-regular-webfont.eot') format('eot'), url('/../fonts/silka-regular-webfont.ttf') format('ttf');
 }
 
-html,
+html {
+  font-family: 'Silka Regular', sans-serif;
+}
+
 button,
 input,
 textarea,
 li,
 a {
-  font-family: 'Silka Regular', sans-serif;
+  font-family: inherit;
 }
 
 h1,
