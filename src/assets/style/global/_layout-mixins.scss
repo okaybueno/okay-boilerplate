@@ -49,16 +49,22 @@
   }
 }
 
-@mixin grid-el-responsive($desktop-cols: 1, $tablet-cols: 1, $mobile-cols: 1) {
+@mixin grid-el-responsive($desktop-cols: false, $tablet-cols: false, $mobile-cols: false) {
   // variables specify the number of columns which each individual element spans
-  width: grid-el-dtp($desktop-cols);
-
-  @include mq('tablet') {
-    width: grid-el-tab($tablet-cols);
+  @if( $desktop-cols ) {
+    width: grid-el-dtp($desktop-cols);
   }
 
-  @include mq('mobile') {
-    width: grid-el-tab($mobile-cols);
+  @if( $tablet-cols) {
+    @include mq('tablet') {
+      width: grid-el-tab($tablet-cols);
+    }
+  }
+
+  @if( $mobile-cols ) {
+    @include mq('mobile') {
+      width: grid-el-mob($mobile-cols);
+    }
   }
 }
 

@@ -24,3 +24,7 @@ html {
 * {
   box-sizing: border-box;
 }
+
+label {
+  user-select: none;
+}
