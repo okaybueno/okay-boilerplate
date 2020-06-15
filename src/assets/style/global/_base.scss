@@ -5,22 +5,6 @@ body {
   border: 0;
 }
 
-html {
-  font-size: 26px;
-
-  @include mq('desktop') {
-    font-size: 20px;
-  }
-
-  @include mq('tablet') {
-    font-size: 18px;
-  }
-
-  @include mq('mobile') {
-    font-size: 16px;
-  }
-}
-
 * {
   box-sizing: border-box;
 }

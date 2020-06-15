@@ -1,11 +1,12 @@
 // Generic Grid Wrapper Class
 @mixin grid-wrapper($breakpoints: null) {
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+
   @if (index($breakpoints, 'mobile') or $breakpoints == null) {
-    max-width: 100%;
-    width: 100%;
-    box-sizing: border-box;
-    padding-left: $grid-o-gutter--dtp;
-    padding-right: $grid-o-gutter--dtp;
+    padding-left: $grid-o-gutter--mob;
+    padding-right: $grid-o-gutter--mob;
   }
 
   @if (index($breakpoints, 'tablet') or $breakpoints == null) {
@@ -16,28 +17,10 @@
   }
 
   @if (index($breakpoints, 'mobile') or $breakpoints == null) {
-    @include mq('mobile') {
-      padding-left: $grid-o-gutter--mob;
-      padding-right: $grid-o-gutter--mob;
+    @include mq('desktop') {
+      padding-left: $grid-o-gutter--dtp;
+      padding-right: $grid-o-gutter--dtp;
     }
-  }
-}
-
-// formula for grid-el functions is refactored from:
- //@return calc((100% / #{$grid-columns} - #{$grid-i-gutter--dtp} / #{$grid-columns} * (#{$grid-columns} - 1)) * #{$cols} + #{$grid-i-gutter--dtp} * #{$cols});
-@function grid-el-dtp($cols, $mod: false) {
-  @if $mod {
-      @return calc((100% / #{$grid-columns / $cols}) - #{(($grid-i-gutter--dtp * ($grid-columns - 1)) / ($grid-columns / $cols)) - ($grid-i-gutter--dtp * ($cols - 1))} + #{$mod});
-  } @else {
-      @return calc((100% / #{$grid-columns / $cols}) - #{(($grid-i-gutter--dtp * ($grid-columns - 1)) / ($grid-columns / $cols)) - ($grid-i-gutter--dtp * ($cols - 1))});
-  }
-}
-
-@function grid-el-tab($cols, $mod: false) {
-  @if $mod {
-    @return calc((100% / #{$grid-columns / $cols}) - #{(($grid-i-gutter--tab * ($grid-columns - 1)) / ($grid-columns / $cols)) - ($grid-i-gutter--tab * ($cols - 1))} + #{$mod});
-  } @else {
-    @return calc((100% / #{$grid-columns / $cols}) - #{(($grid-i-gutter--tab * ($grid-columns - 1)) / ($grid-columns / $cols)) - ($grid-i-gutter--tab * ($cols - 1))});
   }
 }
 
@@ -49,40 +32,57 @@
   }
 }
 
-@mixin grid-el-responsive($desktop-cols: false, $tablet-cols: false, $mobile-cols: false) {
+@function grid-el-tab($cols, $mod: false) {
+  @if $mod {
+    @return calc((100% / #{$grid-columns / $cols}) - #{(($grid-i-gutter--tab * ($grid-columns - 1)) / ($grid-columns / $cols)) - ($grid-i-gutter--tab * ($cols - 1))} + #{$mod});
+  } @else {
+    @return calc((100% / #{$grid-columns / $cols}) - #{(($grid-i-gutter--tab * ($grid-columns - 1)) / ($grid-columns / $cols)) - ($grid-i-gutter--tab * ($cols - 1))});
+  }
+}
+
+@function grid-el-dtp($cols, $mod: false) {
+  @if $mod {
+    @return calc((100% / #{$grid-columns / $cols}) - #{(($grid-i-gutter--dtp * ($grid-columns - 1)) / ($grid-columns / $cols)) - ($grid-i-gutter--dtp * ($cols - 1))} + #{$mod});
+  } @else {
+    @return calc((100% / #{$grid-columns / $cols}) - #{(($grid-i-gutter--dtp * ($grid-columns - 1)) / ($grid-columns / $cols)) - ($grid-i-gutter--dtp * ($cols - 1))});
+  }
+}
+
+@mixin grid-el-res($mobile-cols: false, $tablet-cols: false, $desktop-cols: false) {
   // variables specify the number of columns which each individual element spans
-  @if( $desktop-cols ) {
-    width: grid-el-dtp($desktop-cols);
+
+  @if ($mobile-cols) {
+    width: grid-el-mob($mobile-cols);
   }
 
-  @if( $tablet-cols) {
+  @if ($tablet-cols) {
     @include mq('tablet') {
       width: grid-el-tab($tablet-cols);
     }
   }
 
-  @if( $mobile-cols ) {
-    @include mq('mobile') {
-      width: grid-el-mob($mobile-cols);
+  @if ($desktop-cols) {
+    @include mq('desktop') {
+      width: grid-el-dtp($desktop-cols);
     }
   }
 }
 
-@mixin grid-el-row($row-els-desktop: null, $row-els-tablet: null, $row-els-mobile: null ) {
+@mixin grid-row-mrg($row-els-mobile: null, $row-els-tablet: null, $row-els-desktop: null ) {
   // variables specify the number of elements per row
   max-width: 100%;
 
-  @if( $row-els-desktop) {
-    margin-right: $grid-i-gutter--dtp;
-    &:nth-child(#{$row-els-desktop}n) {
+  @if ($row-els-mobile) {
+    margin-right: $grid-i-gutter--mob;
+    &:nth-child(#{$row-els-mobile}n) {
       margin-right: 0;
     }
   }
 
-  @if( $row-els-tablet) {
+  @if ($row-els-tablet) {
     @include mq('tablet') {
       margin-right: $grid-i-gutter--tab;
-      &:nth-child(#{$row-els-desktop}n) {
+      &:nth-child(#{$row-els-mobile}n) {
         margin-right: $grid-i-gutter--tab;
       }
       &:nth-child(#{$row-els-tablet}n) {
@@ -91,13 +91,16 @@
     }
   }
 
-  @if( $row-els-mobile ) {
-    @include mq('mobile') {
-      margin-right: $grid-i-gutter--mob;
-      &:nth-child(#{$row-els-tablet}n) {
-        margin-right: $grid-i-gutter--mob;
-      }
+  @if ($row-els-desktop) {
+    @include mq('desktop') {
+      margin-right: $grid-i-gutter--dtp;
       &:nth-child(#{$row-els-mobile}n) {
+        margin-right: $grid-i-gutter--dtp;
+      }
+      &:nth-child(#{$row-els-tablet}n) {
+        margin-right: $grid-i-gutter--dtp;
+      }
+      &:nth-child(#{$row-els-desktop}n) {
         margin-right: 0;
       }
     }
@@ -106,8 +109,9 @@
 
 // example usage: @include property-with-gutter('right');
 @mixin property-with-gutter($property, $breakpoints: null, $grid-gutter: 'outer') {
-  @if (index($breakpoints, 'desktop') or $breakpoints == null) {
-    #{$property}: if($grid-gutter == 'outer', $grid-o-gutter--dtp, $grid-i-gutter--dtp);
+
+  @if (index($breakpoints, 'mobile') or $breakpoints == null) {
+    #{$property}: if($grid-gutter == 'outer', $grid-o-gutter--mob, $grid-i-gutter--mob);
   }
 
   @if (index($breakpoints, 'tablet') or $breakpoints == null) {
@@ -116,9 +120,9 @@
     }
   }
 
-  @if (index($breakpoints, 'mobile') or $breakpoints == null) {
-    @include mq('mobile') {
-      #{$property}: if($grid-gutter == 'outer', $grid-o-gutter--mob, $grid-i-gutter--mob);
+  @if (index($breakpoints, 'desktop') or $breakpoints == null) {
+    @include mq('desktop') {
+      #{$property}: if($grid-gutter == 'outer', $grid-o-gutter--dtp, $grid-i-gutter--dtp);
     }
   }
 }

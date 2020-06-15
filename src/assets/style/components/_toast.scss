@@ -2,8 +2,9 @@
   @include grid-wrapper;
   position: fixed;
   z-index: z('modal');
-  bottom: 40px;
-  height: 60px;
+  bottom: 0;
+  padding-top: $size-s;
+  padding-bottom: $size-s;
   border-radius: $border-radius;
   color: $black;
   background: $grey-mid;

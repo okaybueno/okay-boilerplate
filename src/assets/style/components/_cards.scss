@@ -31,25 +31,18 @@
 .card-example {
   @include card;
   @include card-hover;
-  @include grid-el-row(3, null, 1);
-  flex-basis: grid-el-dtp(4);
+  @include grid-row-mrg(1, 2, 4);
+  flex-basis: 100%;
   flex-grow: 0;
   flex-shrink: 1;
-  margin-right: $grid-i-gutter--dtp;
   padding: $size-s;
   text-align: center;
 
   @include mq('tablet') {
-    flex-basis: grid-el-tab(4);
-    flex-grow: 0;
-    flex-shrink: 1;
-    margin-right: $grid-i-gutter--tab;
+    flex-basis: grid-el-tab(6);
   }
 
-  @include mq('mobile') {
-    flex-basis: 100%;
-    flex-grow: 0;
-    flex-shrink: 1;
-    margin-right: unset;
+  @include mq('desktop') {
+    flex-basis: grid-el-dtp(3);
   }
 }

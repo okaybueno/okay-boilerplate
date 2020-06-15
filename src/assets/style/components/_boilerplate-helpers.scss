@@ -4,24 +4,25 @@
   flex-wrap: wrap;
 
   &--mrg {
-    margin-bottom: $grid-i-gutter--dtp;
+    margin-bottom: $grid-i-gutter--mob;
 
     @include mq('tablet') {
       margin-bottom: $grid-i-gutter--tab;
     }
 
-    @include mq('mobile') {
-      margin-bottom: $grid-i-gutter--mob;
+    @include mq('desktop') {
+      margin-bottom: $grid-i-gutter--dtp;
+
     }
   }
 
   &__row-el {
     &--12 {
-      @include grid-el-row(12, 12, 12);
+      @include grid-row-mrg(12, 12, 12);
     }
 
     &--8 {
-      @include grid-el-row(8, 8, 8);
+      @include grid-row-mrg(8, 8, 8);
     }
   }
 
@@ -30,39 +31,64 @@
     justify-content: center;
     align-items: center;
     height: $size-l;
-    background: $color-secondary;
+    background: $grey-light;
 
     &--1 {
-      width: grid-el-dtp(1);
+      width: grid-el-mob(1);
+
+      @include mq('tablet') {
+        width: grid-el-tab(1);
+      }
+
+      @include mq('desktop') {
+        width: grid-el-dtp(1);
+      }
     }
 
     &--2 {
-      width: grid-el-dtp(2);
+      width: grid-el-mob(2);
+
+      @include mq('tablet') {
+        width: grid-el-tab(2);
+      }
+
+      @include mq('desktop') {
+        width: grid-el-dtp(2);
+      }
     }
 
     &--3-3 {
-      width: grid-el-dtp(3);
-      margin-left: grid-el-dtp(3, $grid-i-gutter--dtp);
+      width: grid-el-mob(3);
+      margin-left: grid-el-mob(3, $grid-i-gutter--mob);
 
       @include mq('tablet') {
         width: grid-el-tab(3);
         margin-left: grid-el-tab(3, $grid-i-gutter--tab);
       }
 
-      @include mq('mobile') {
-        width: grid-el-mob(3);
-        margin-left: grid-el-mob(3, $grid-i-gutter--mob);
+      @include mq('desktop') {
+        width: grid-el-dtp(3);
+        margin-left: grid-el-dtp(3, $grid-i-gutter--dtp);
       }
     }
 
 
     &--4 {
-      width: grid-el-dtp(4);
+      width: grid-el-mob(4);
+
+      @include mq('tablet') {
+        width: grid-el-tab(4);
+      }
+
+      @include mq('desktop') {
+        width: grid-el-dtp(4);
+      }
     }
 
     &--rsp {
-      @include grid-el-responsive(3, 4, 6); // on desktop our el takes 3 columns, on tablet: 4, and on mobile: 6
-      @include grid-el-row(4, 3, 2); // on desktop there are 4 els per row, on tablet: 3 els per row, and on mobile: 2 els per row
+      @include grid-el-res(3, 6, 3);
+      @include grid-row-mrg(4, 2, 4);
+      margin-bottom: $size-m;
     }
 
   }
@@ -75,12 +101,12 @@
 }
 
 .color {
-  width: grid-el-dtp(1);
-  padding-top: grid-el-dtp(1);
+  width: grid-el-mob(2);
+  padding-top: grid-el-mob(2);
   border-radius: 50%;
 
   &:not(:last-child) {
-    margin-right: $grid-i-gutter--dtp;
+    margin-right: $grid-i-gutter--mob;
   }
 
   @include mq('tablet') {
@@ -92,17 +118,17 @@
     }
   }
 
-  @include mq('tablet-small') {
+  @include mq('tablet') {
     width: grid-el-tab(2);
     padding-top: grid-el-tab(2);
   }
 
-  @include mq('mobile') {
-    width: grid-el-mob(2);
-    padding-top: grid-el-mob(2);
+  @include mq('desktop') {
+    width: grid-el-dtp(2);
+    padding-top: grid-el-dtp(2);
 
     &:not(:last-child) {
-      margin-right: $grid-i-gutter--mob;
+      margin-right: $grid-i-gutter--dtp;
     }
   }
 
@@ -148,4 +174,25 @@
 .newsletter {
   @include grid-wrapper;
   background: $grey-light;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-start;
+  padding: $size-s 0;
+
+  .button {
+    &:not(:last-child) {
+      margin-right: $size-s;
+    }
+  }
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+
+  a {
+    margin-top: 1rem;
+  }
 }

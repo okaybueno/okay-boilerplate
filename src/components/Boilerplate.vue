@@ -9,7 +9,8 @@
             <p>Our layout is based on a flexbox grid approach – this boilerplate works with an eight column grid for all
                 screen sizes, but feel free to chose whatever suits your project best. Please keep in mind that you will
                 have to adjust the grid-el functions if you adjust the column approach. We use box-sizing border-box on
-                all of our elements by default. We use the grid-el-row function to specify how many els there are in the row Here are some examples:</p>
+                all of our elements by default. We use the grid-el-row function to specify how many els there are in the
+                row Here are some examples:</p>
             <div class="grid grid--mrg">
                 <div class="grid__el grid__el--1 grid__row-el--12">
                     1
@@ -85,7 +86,8 @@
                 </div>
             </div>
             <p>Layouts can easily be made responsive by defining the components width and margin values in media queries
-                using grid-el-responsive mixin and grid-el-row functions. Resize the browser window to see the effect:</p>
+                using grid-el-responsive mixin and grid-el-row functions. Resize the browser window to see the
+                effect:</p>
             <div class="grid">
                 <div class="grid__el grid__el--rsp">
                     O
@@ -111,7 +113,6 @@
             <h3>H3 Headline</h3>
             <h4>H4 Headline</h4>
             <p>Paragraph</p>
-            <a href="#">Link</a>
             <ul>
                 <li>
                     Unordered list
@@ -128,7 +129,10 @@
                     Ordered list
                 </li>
             </ol>
-            <label>Label</label>
+            <div class="flex-col">
+                <label>Label</label>
+                <a href="#">Link</a>
+            </div>
         </section>
         <section class="content">
             <h1>Colors, Shadows, and Gradients</h1>
@@ -166,8 +170,16 @@
                 menus, buttons, input field with labels, image sliders, cards, but also sections and blocks of content
                 should be treated as a component, which means all the css should be scoped in a separate scss file. To
                 illustrate this approach, here's a sign up form with an input field and a button:</p>
-            <div class="newseltter">
+            <div class="newsletter">
 
+            </div>
+        </section>
+        <section class="content">
+            <h1>Buttons</h1>
+            <p>All buttons must have valid states for active, focus, and hover.</p>
+            <div class="buttons">
+                <button class="button button--primary">Button Regular</button>
+                <button class="button button--inactive">Button Inactive</button>
             </div>
         </section>
         <section class="content">
@@ -196,8 +208,8 @@
                 <Dropdown :options="dropdownOptions"
                           :selected="selectedOption"
                           @optionSelected="selectedOption = $event"
-                          placeholder="Select an option"
-                          toggleClass="dropdown--white" menuClass="dropdown--white">
+                          menuClass="dropdown--white"
+                          placeholder="Select an option" toggleClass="dropdown--white">
                 </Dropdown>
             </div>
         </section>
@@ -208,16 +220,16 @@
         <section class="content">
             <h1>Validation</h1>
             <p>Type in something:</p>
-            <input type="text" @input="validateInput" v-model="firstName">
+            <input @input="validateInput" type="text" v-model="firstName">
             <p>{{ validationResponse}}</p>
         </section>
     </div>
 </template>
 
 <script>
+    import {getValidationRules, ruleNames, validationService} from "../validation";
     import Dropdown from "./Dropdown";
     import NotificationSwitch from "./Switch";
-    import { ruleNames, getValidationRules, validationService} from "../validation";
 
     export default {
         name: 'Boilerplate',
@@ -225,11 +237,11 @@
             Dropdown,
             NotificationSwitch
         },
-        data: function(){
+        data: function () {
             return {
                 dropdownOptions: [
-                    { label: 'Active', value: 'active'},
-                    { label: 'Inactive', value: 'inactive'}
+                    {label: 'Active', value: 'active'},
+                    {label: 'Inactive', value: 'inactive'}
                 ],
                 selectedOption: null,
                 validationResponse: null,
@@ -238,13 +250,13 @@
         },
 
         methods: {
-            validateInput () {
+            validateInput() {
                 let rules = getValidationRules(ruleNames.firstName);
                 let validationObj = {
                     first_name: this.firstName
                 };
                 let validation = validationService(validationObj, rules);
-                if( validation.passes()) {
+                if (validation.passes()) {
                     this.validationResponse = 'validation ok!'
                 } else {
                     let errors = validation.getErrors()
@@ -252,7 +264,7 @@
                 }
             }
         },
-        mounted () {
+        mounted() {
             this.validateInput();
         }
 

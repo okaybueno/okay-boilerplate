@@ -1,73 +1,51 @@
-$switch-bg-color: #f3f2f0 !default;
-$switch-checkbox-inactive-color: #d8d8d8 !default;
-$switch-checkbox-active-color: #e63351 !default;
-$switch-text-color: #000000 !default;
-$switch-text-color-inactive: #767676 !default;
-
 .switch {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+
+  &__container {
+    margin: 20px 0;
+  }
+
+  &__inner {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    justify-content: flex-start;
+    cursor: pointer;
+    font-size: 1rem;
+  }
 
-    &__container {
-        margin: 20px 0;
+  &__box {
+    position: relative;
+    width: 48px;
+    min-width: 48px;
+    height: 24px;
+    margin-right: 32px;
+    border-radius: 12px;
+    background: $grey-light;
+
+    &::after {
+      @include transition-acceleration(all, .32s);
+      position: absolute;
+      display: block;
+      top: 4px;
+      left: 6px;
+      transform: translate3d(0, 0, 0);
+      width: 16px;
+      height: 16px;
+      border-radius: 12px;
+      content: '';
+      background: $grey-dark;
     }
+  }
 
-    &__inner {
-        display: flex;
-        justify-content: flex-start;
-        cursor: pointer;
-        font-size: 1rem;
-    }
+  input {
+    position: absolute;
+    visibility: hidden;
+    pointer-events: none;
+  }
 
-    &__text {
-        color: $switch-text-color;
-        font-size: 1rem;
-        text-transform: none;
-        width: 100%;
-        cursor: pointer;
-
-        &--right {
-            text-align: right;
-        }
-
-        &--inactive {
-            color: $switch-text-color-inactive;
-        }
-    }
-
-    &__box {
-        position: relative;
-        background: $switch-bg-color;
-        width: 48px;
-        min-width: 48px;
-        height: 24px;
-        border-radius: 12px;
-        margin-right: 32px;
-
-        &::after {
-            @include transition-acceleration (all, .32s);
-            position: absolute;
-            top: 4px;
-            left: 6px;
-            display: block;
-            width: 16px;
-            height: 16px;
-            transform: translate3d(0, 0, 0);
-            border-radius: 12px;
-            background: $switch-checkbox-inactive-color;
-            content: '';
-        }
-    }
-
-    input {
-        visibility: hidden;
-        pointer-events: none;
-        position: absolute;
-    }
-
-    input:checked + &__box::after {
-        left: 26px;
-        background-color: $switch-checkbox-active-color;
-    }
+  input:checked + &__box::after {
+    left: 26px;
+    background-color: $color-primary;
+  }
 }

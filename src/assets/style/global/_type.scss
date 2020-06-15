@@ -6,6 +6,7 @@
   font-display: optional;
   src: url('/../fonts/Gellix-Bold.woff2') format('woff2'), url('/../fonts/Gellix-Bold.woff') format('woff'), url('/../fonts/Gellix-Bold.eot') format('eot');
 }
+
 @font-face {
   font-family: 'Silka Regular';
   font-style: normal;
@@ -15,6 +16,19 @@
 
 html {
   font-family: 'Silka Regular', sans-serif;
+  font-size: 16px;
+
+  @include mq('tablet') {
+    font-size: 18px;
+  }
+
+  @include mq('desktop') {
+    font-size: 20px;
+  }
+
+  @include mq('desktop-wide') {
+    font-size: 26px;
+  }
 }
 
 button,
@@ -35,60 +49,67 @@ h4 {
 
 
 h1 {
+  margin-bottom: 2rem;
   font-family: 'Gellix-Bold', sans-serif;
   font-size: 3rem;
   line-height: 120%;
-  margin-bottom: 2rem;
 }
 
 h2 {
+  margin-bottom: 1.4rem;
   font-family: 'Gellix-Bold', sans-serif;
   font-size: 2.4rem;
   line-height: 120%;
-  margin-bottom: 1.4rem;
 }
 
 h3 {
+  margin-bottom: 1rem;
   font-family: 'Gellix-Bold', sans-serif;
   font-size: 1.6rem;
   line-height: 140%;
-  margin-bottom: 1rem;
 }
 
 h4 {
+  margin-bottom: .5rem;
   font-family: 'Gellix-Bold', sans-serif;
   font-size: 1rem;
   line-height: 140%;
-  margin-bottom: .5rem;
 }
 
 p {
+  margin-bottom: .5rem;
   font-size: 1rem;
   line-height: 160%;
 }
 
 button {
   font-size: 1rem;
-  white-space: nowrap;
   line-height: 100%;
+  white-space: nowrap;
 }
 
 a {
-  color: $color-primary;
+  outline: none;
   font-size: 1rem;
   line-height: 100%;
-  outline: none;
+  color: $color-primary;
 }
 
 ul {
   li {
-    margin-left: 1rem;
-    list-style: none;
+    list-style: disc;
+  }
+}
+
+ol {
+  li {
+    list-style: decimal;
   }
 }
 
 li {
   margin-bottom: .8rem;
+  margin-left: 1rem;
   font-size: 1rem;
   line-height: 160%;
 }
@@ -115,7 +136,7 @@ textarea {
 }
 
 .text-truncate {
-   overflow: hidden;
-   text-overflow: ellipsis;
-   white-space: nowrap;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
