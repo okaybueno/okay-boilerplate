@@ -100,10 +100,25 @@
     }
 
     &--nested-2 {
-      width: grid-el-dtp-child(3, 6);
+      width: grid-el-mob-child(3, 6);
+
+      @include mq('tablet') {
+        width: grid-el-tab-child(3, 6);
+      }
+
+      @include mq('desktop') {
+        width: grid-el-dtp-child(3, 6);
+      }
 
       &:last-child {
-        margin-left: $grid-i-gutter--dtp;
+        margin-left: $grid-i-gutter--mob;
+        @include mq('tablet') {
+          margin-left: $grid-i-gutter--tab;
+        }
+
+        @include mq('desktop') {
+          margin-left: $grid-i-gutter--dtp;
+        }
       }
     }
 
