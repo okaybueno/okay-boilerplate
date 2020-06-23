@@ -102,6 +102,18 @@
                     Y
                 </div>
             </div>
+
+            <p>Below is a nested layout</p>
+            <div class="grid">
+                <div class=" grid__el--hw">
+                    <div class="grid__el grid__el--nested-2"></div>
+                    <div class="grid__el grid__el--nested-2"></div>
+                </div>
+                <div class=" grid__el--hw">
+                    <div class="grid__el grid__el--nested-2"></div>
+                    <div class="grid__el grid__el--nested-2"></div>
+                </div>
+            </div>
         </section>
         <section class="content">
             <h1>Typescale</h1>

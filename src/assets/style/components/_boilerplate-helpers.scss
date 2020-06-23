@@ -91,6 +91,22 @@
       margin-bottom: $size-m;
     }
 
+    &--hw {
+      @include grid-el-res(6, 6, 6);
+      @include grid-row-mrg(2, 2, 2);
+      margin-bottom: $size-m;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    &--nested-2 {
+      width: grid-el-dtp-child(3, 6);
+
+      &:last-child {
+        margin-left: $grid-i-gutter--dtp;
+      }
+    }
+
   }
 }
 

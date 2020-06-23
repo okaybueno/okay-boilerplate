@@ -48,6 +48,36 @@
   }
 }
 
+@function grid-el-mob-child($cols, $parent-cols, $mod: false) {
+  $colsAdjusted: $cols * $grid-columns / $parent-cols;
+
+@if $mod {
+    @return calc((100% / #{$grid-columns / $colsAdjusted}) - #{(($grid-i-gutter--mob * ($grid-columns - 1)) / ($grid-columns / $colsAdjusted)) - ($grid-i-gutter--mob * ($colsAdjusted - 1))} + #{$mod});
+  } @else {
+    @return calc((100% / #{$grid-columns / $colsAdjusted}) - #{(($grid-i-gutter--mob * ($grid-columns - 1)) / ($grid-columns / $colsAdjusted)) - ($grid-i-gutter--mob * ($colsAdjusted - 1))});
+  }
+}
+
+@function grid-el-tab-child($cols, $parent-cols, $mod: false) {
+  $colsAdjusted: $cols * $grid-columns / $parent-cols;
+@if $mod {
+    @return calc((100% / #{$grid-columns / $colsAdjusted}) - #{(($grid-i-gutter--tab * ($grid-columns - 1)) / ($grid-columns / $colsAdjusted)) - ($grid-i-gutter--tab * ($colsAdjusted - 1))} + #{$mod});
+  } @else {
+    @return calc((100% / #{$grid-columns / $colsAdjusted}) - #{(($grid-i-gutter--tab * ($grid-columns - 1)) / ($grid-columns / $colsAdjusted)) - ($grid-i-gutter--tab * ($colsAdjusted - 1))});
+  }
+}
+
+@function grid-el-dtp-child($cols, $parent-cols, $mod: false) {
+  $colsAdjusted: $cols * $grid-columns / $parent-cols;
+
+@if $mod {
+    @return calc((100% / #{$grid-columns / $colsAdjusted}) - #{(($grid-i-gutter--dtp * ($grid-columns - 1)) / ($grid-columns / $colsAdjusted)) - ($grid-i-gutter--dtp * ($colsAdjusted - 1))} + #{$mod});
+  } @else {
+    @return calc((100% / #{$grid-columns / $colsAdjusted}) - #{(($grid-i-gutter--dtp * ($grid-columns - 1)) / ($grid-columns / $colsAdjusted)) - ($grid-i-gutter--dtp * ($colsAdjusted - 1))});
+  }
+}
+
+
 @mixin grid-el-res($mobile-cols: false, $tablet-cols: false, $desktop-cols: false) {
   // variables specify the number of columns which each individual element spans
 
