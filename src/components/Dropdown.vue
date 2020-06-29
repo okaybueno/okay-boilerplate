@@ -1,7 +1,7 @@
 <template>
     <div class="dropdown" @click="toggleMenu">
         <div class="dropdown__toggle" :class="toggleClass" ref="dropdownToggle">
-            <span class="dropdown__selected" ref="dropdownSelected">{{ placeholderValue }}</span>
+            <span class="dropdown__selected" :class="{ 'dropdown__selected--placeholder': showPlaceholder}" ref="dropdownSelected">{{ placeholderValue }}</span>
             <span class="caret" :class="{'caret--active' : showMenu }" ref="dropdownCaret"></span>
         </div>
 
@@ -47,7 +47,7 @@
         computed: {
             placeholderValue(){
                 // note that: if you want the ability to deselect values, include an option with the value of ''
-                if( !this.selectedOption || !this.selectedOption.value ){
+                if( this.showPlaceholder ){
                     return this.placeholder;
                 }
                 return this.selectedOption.label;
@@ -58,12 +58,20 @@
                 if( this.includePlaceholderAsOption && this.selectedOption && !this.selectedOption.value ) options.unshift( { value: '', label: this.placeholderText });
 
                 return options;
+            },
+            showPlaceholder(){
+                return !this.selectedOption || !this.selectedOption.value;
             }
         },
         methods: {
             updateOption(option) {
-                this.selectedOption = option;
-                this.$emit('optionSelected', this.selectedOption);
+                if( this.selectedOption && option.value !== this.selectedOption.value) {
+                    this.selectedOption = option;
+                    this.$emit('optionSelected', this.selectedOption);
+                } else {
+                    this.selectedOption = {}
+                    this.$emit('optionSelected', {});
+                }
             },
             toggleMenu() {
                 this.showMenu = !this.showMenu;
@@ -86,12 +94,12 @@
         beforeMount() {
             this.selectedOption = this.selected;
 
-            window.addEventListener('click', this.handleOutsideClick );
+            window.addEventListener('mouseup', this.handleOutsideClick );
 
         },
 
         beforeDestroy(){
-            window.removeEventListener('click', this.handleOutsideClick );
+            window.removeEventListener('mouseup', this.handleOutsideClick );
         },
 
         watch: {

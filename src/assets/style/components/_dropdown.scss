@@ -75,6 +75,10 @@ $dropdown-item-active-bg: none !default;
         text-overflow: ellipsis;
         line-height: 1.1rem;
         z-index: 2;
+
+      &--placeholder {
+        color: rgba(0, 0, 0, .5);
+      }
     }
 
     /* TO BE SET BY USER */

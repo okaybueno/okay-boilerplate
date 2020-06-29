@@ -7,16 +7,10 @@ This boilerplate is a testing ground for our okay bueno scss guidelines. This bo
 npm install
 ```
 
-### Start Server
+### Start Server, and watch files
 
 ```
 npm run serve
-```
-
-### Compiles and hot-reloads for development
-
-```
-npm run watch
 ```
 
 ### Compiles and minifies for production
