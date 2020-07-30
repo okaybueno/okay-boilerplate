@@ -78,7 +78,6 @@ h4 {
 
 p {
   margin-bottom: .5rem;
-  font-size: 1rem;
   line-height: 160%;
 }
 
@@ -90,9 +89,13 @@ button {
 
 a {
   outline: none;
-  font-size: 1rem;
   line-height: 100%;
   color: $color-primary;
+}
+
+p, a {
+  font-size: 1rem;
+  -webkit-text-size-adjust: none;
 }
 
 ul {
