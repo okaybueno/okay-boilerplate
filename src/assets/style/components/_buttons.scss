@@ -7,22 +7,37 @@
   border: 0;
   border-radius: 2rem;
   user-select: none;
-
   &:hover,
   &:focus {
-    outline: 0;
-    box-shadow: $shadow-button-hover;
-    transition: box-shadow .16s linear;
+    &::before {
+      box-shadow: $shadow-button-hover;
+      opacity: .8;
+      transition: box-shadow .24s linear;
+    }
   }
 
+  &::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 4px;
+    right: 4px;
+    bottom: 0;
+    box-shadow: $shadow-button;
+    opacity: .66;
+    transition: box-shadow .4s ease;
+    z-index: -1;
+  }
 
   &::after {
-    @include after-fill;
-    top: -4px;
-    left: -4px;
-    border: 4px solid transparent;
-    border-radius: 2rem;
-    transition: border .16s linear;
+    content: '';
+    border-radius: $border-radius;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: -1;
   }
 
   &:focus {
@@ -36,41 +51,57 @@
     color: $black;
     background: $white;
 
-    &:hover,
-    &:focus {
-      box-shadow: none;
+    &::after, &::before {
+      content: unset;
     }
 
+    &:hover,
+    &:focus {
+      &::after {
+        box-shadow: none;
+      }
+    }
   }
 
   &--primary {
     color: $white;
-    background-color: $color-primary;
-  }
-
-  &--inactive {
-    cursor: default;
-    border: 0;
-    color: $white;
-    background: $grey-darker;
 
     &::after {
-      @include after-fill;
-      top: -4px;
-      left: -4px;
-      border: 4px solid transparent;
-      border-radius: 2rem;
-      transition: border .16s linear;
+      background: $color-primary;
+    }
+  }
+
+  &--disabled {
+    border: 0;
+    color: $white;
+    cursor: default;
+
+    &:after {
+      background: $grey-light;
     }
 
-    &:hover,
-    &:focus {
-      box-shadow: $shadow-button;
+    &::before {
+      content: unset;
+    }
 
-      &::after {
-        border: 4px solid transparent;
-      }
+    &:hover {
+      transform: unset;
     }
   }
 }
 
+.button-container {
+  display: flex;
+  width: 100%;
+  flex-grow: 1;
+
+  &--center {
+    align-items: center;
+  }
+
+  .button {
+    &:not(:first-child) {
+      @include property-with-gutter('margin-left', 'inner');
+    }
+  }
+}
